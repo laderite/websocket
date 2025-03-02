@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethos Suite Admin</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">Ethos</h1>
+                <span class="logo-badge">Admin</span>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">
+                    <i class="bi bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="bi bi-people"></i>
+                    <span>Clients</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="bi bi-terminal"></i>
+                    <span>Commands</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="bi bi-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="page-title">
+                    <h2>Dashboard</h2>
+                    <p class="subtitle">Manage your connected clients</p>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="search-container">
+                        <i class="bi bi-search search-icon"></i>
+                        <input type="text" id="search-clients" class="search-input" placeholder="Search clients...">
+                    </div>
+                    
+                    <button id="refresh-btn" class="icon-button" title="Refresh client list">
+                        <i class="bi bi-arrow-clockwise"></i>
+                    </button>
+                    
+                    <button id="logout-btn" class="icon-button" title="Logout">
+                        <i class="bi bi-box-arrow-right"></i>
+                    </button>
+                </div>
+            </header>
+            
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="client-count">0</div>
+                        <div class="stat-label">Connected Clients</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Clients Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h3>Connected Clients</h3>
+                </div>
+                <div class="client-list" id="clients-list">
+                    <!-- Client items will be inserted here -->
+                </div>
+            </section>
+            
+            <!-- Command Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h3>Send Command</h3>
+                </div>
+                <div class="command-panel">
+                    <form id="command-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="target" class="form-label">Target Client</label>
+                                <div class="select-wrapper">
+                                    <select id="target" class="form-select">
+                                        <option value="all">All Clients</option>
+                                    </select>
+                                    <i class="bi bi-chevron-down select-icon"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="command" class="form-label">Command</label>
+                                <input type="text" id="command" class="form-input" required placeholder="Enter command...">
+                            </div>
+                            
+                            <div class="form-group wide">
+                                <label for="params" class="form-label">Parameters (JSON)</label>
+                                <textarea id="params" class="form-input code-area" rows="3" placeholder='{ "key": "value" }'></textarea>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="button primary">Send Command</button>
+                                <button type="reset" class="button secondary">Clear</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            
+            <!-- Documentation Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h3>Documentation</h3>
+                </div>
+                <div class="docs-panel">
+                    <div class="docs-section">
+                        <h4>Available Commands</h4>
+                        <div class="command-list">
+                            <div class="command-item">
+                                <div class="command-name">kick</div>
+                                <div class="command-desc">Kicks a player from the game</div>
+                                <div class="command-example">
+                                    <code>{"message": "Reason for kick"}</code>
+                                </div>
+                            </div>
+                            <div class="command-item">
+                                <div class="command-name">message</div>
+                                <div class="command-desc">Sends a message to the client</div>
+                                <div class="command-example">
+                                    <code>{"message": "Hello from the server!"}</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
